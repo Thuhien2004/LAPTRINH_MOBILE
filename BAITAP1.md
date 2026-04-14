@@ -115,10 +115,14 @@ Chạy docker-compose lần đầu để Node-RED tự sinh file cấu hình tro
 <img width="1476" height="701" alt="image" src="https://github.com/user-attachments/assets/31d0d117-c87e-403d-b5b6-b5c8ea93e42b" />
 - Nếu truy cập địa chỉ cổng noded-red mà ra màn hình yêu cầu đăng nhập thì thành công:
 <img width="1759" height="889" alt="image" src="https://github.com/user-attachments/assets/603ea0f7-edb1-4793-8933-2fadbe4a42d4" />
-
-
-
-
+# E. Triển khai ứng dụng
+1. Chuyển vào trong thư mục ~/myapp,Gõ lệnh để docker compose chạy: sẽ run tất cả các service khai báo trong file docker-compose.yml
+<img width="1297" height="87" alt="image" src="https://github.com/user-attachments/assets/c2676ed7-73ce-40f1-b8ca-45cbca1f361c" />
+2. Kiểm tra các container đang chạy trong docker, nếu có cái nào bị restart cần tìm lỗi rồi edit lại docker-compose.yml
+<img width="1452" height="138" alt="image" src="https://github.com/user-attachments/assets/f293db32-86ca-4288-8280-1aaaf482268b" />
+3. Kiểm tra kiểm thử các service đang chạy độc lập thông qua ip và port của nó: ví dụ mở trình duyệt ip_ubuntu:1880 để check nodered đã chạy chưa
+   ước đó đã kiểm tra rồi, có giao diện đăng nhập nodered rồi.
+4.Sử dụng nodered: kéo nodered http_in , http_response, function : để tạo api get đơn giản (dùng cho /api proxy_pass của nginx)
 
 
 
