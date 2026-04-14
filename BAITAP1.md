@@ -134,6 +134,10 @@ Chạy docker-compose lần đầu để Node-RED tự sinh file cấu hình tro
 <img width="1547" height="366" alt="image" src="https://github.com/user-attachments/assets/e336c7a6-f14c-4f41-87e7-98e3cce2eb31" />
 --> oke :))
 5. Sửa file ./myweb/index.html : thêm code html+js để sử dụng được api đã khai báo proxy_pass (thực ra là sử dụng nodered http_in hoặc sử dụng service myapi)
+<img width="1603" height="927" alt="image" src="https://github.com/user-attachments/assets/5f158f16-fdee-43ed-8ce4-33072d0cf0d8" />
+- Sau đó ta test xem nó có gọi được API hay ko? Gõ trên thanh địa chỉ: http://10.170.151.31, hiện giao diện là được:
+<img width="1815" height="897" alt="image" src="https://github.com/user-attachments/assets/681a0b59-9088-4281-aaf1-601c53a4f440" />
+<img width="438" height="312" alt="image" src="https://github.com/user-attachments/assets/37cd7907-b510-4436-baa9-4c7222350d58" />
 
 
 
