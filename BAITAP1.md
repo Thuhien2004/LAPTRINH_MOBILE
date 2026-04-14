@@ -188,7 +188,7 @@ Có thể route:
 /api → Node-RED
 Dễ thêm auth, cache, SSL, rate-limit sau này.
 Không expose trực tiếp Node-RED ra internet → an toàn hơn.
-3. Sự khác biệt giữa việc Mount file và Mount thư mục trong Docker là gì?
+2. Sự khác biệt giữa việc Mount file và Mount thư mục trong Docker là gì?
 Mount file
 ./nginx/nginx.conf:/etc/nginx/nginx.conf
 → chỉ mount 1 file
@@ -198,18 +198,18 @@ Mount thư mục
 Khác nhau:
 mount file → chỉnh 1 config cụ thể
 mount folder → sync nhiều file (html, js…)
-5. Nếu thay đổi file index.html ở máy Ubuntu, nội dung trên web có thay đổi ngay không? Tại sao?
+3. Nếu thay đổi file index.html ở máy Ubuntu, nội dung trên web có thay đổi ngay không? Tại sao?
 Có, cập nhật ngay.
 Vì:
 ./myweb:/myweb
 là bind mount, container đọc trực tiếp file trên host → sửa là web đổi luôn, không cần restart.
-6. docker-compose.yml khai báo các services có phần restart: always hoặc restart: unless-stopped : chúng để làm gì?
-restart: always → container crash sẽ tự chạy lại
-restart: unless-stopped → chạy lại trừ khi user stop thủ công
+4. docker-compose.yml khai báo các services có phần restart: always hoặc restart: unless-stopped : chúng để làm gì?
+- restart: always → container crash sẽ tự chạy lại
+- restart: unless-stopped → chạy lại trừ khi user stop thủ công
 Dùng để:
-giữ service luôn hoạt động
-tự recover khi lỗi
-8. Cách khai báo để tất cả các services đều dùng chung 1 network? lợi ích của việc khai báo này là gì? Sửa đổi file docker-compose để tất cả các service
++ giữ service luôn hoạt động
++ tự recover khi lỗi
+5. Cách khai báo để tất cả các services đều dùng chung 1 network? lợi ích của việc khai báo này là gì? Sửa đổi file docker-compose để tất cả các service
 đều dùng chung 1 network.
 - Thêm vào cuối file:
 networks:
@@ -233,7 +233,7 @@ services:
 +proxy_pass http://nodered:1880
 +cô lập network riêng
 +bảo mật hơn
-9. Tìm cách đưa Cloudflare Token vào trong file .env rồi sau đó thêm .env vào file .gitignore trước khi push code lên github. Tại sao nói đây là điều quan trọng về bảo mật mã nguồn?
+6. Tìm cách đưa Cloudflare Token vào trong file .env rồi sau đó thêm .env vào file .gitignore trước khi push code lên github. Tại sao nói đây là điều quan trọng về bảo mật mã nguồn?
 - File .env:
 CF_TOKEN=eyJhIjoi....
 docker-compose.yml:
@@ -246,12 +246,12 @@ cloudflared:
 + token là secret
 + push lên GitHub → người khác dùng tunnel của mày
 + có thể chiếm domain public
-10. Tại sao chúng ta nên thêm hậu tố :ro khi mount file cấu hình Nginx?
+7. Tại sao chúng ta nên thêm hậu tố :ro khi mount file cấu hình Nginx?
 - Lợi ích:
 + container không sửa được config
 + tránh bị ghi đè
 + tăng bảo mật
-11. Khi dùng Cloudflare Tunnel: có cần thiết phải mở cổng cho các service nữa không?
+8. Khi dùng Cloudflare Tunnel: có cần thiết phải mở cổng cho các service nữa không?
 --> Không cần
 + mở port 80
 + mở port 1880
