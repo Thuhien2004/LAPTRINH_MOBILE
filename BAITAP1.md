@@ -18,6 +18,7 @@
 <img width="806" height="230" alt="image" src="https://github.com/user-attachments/assets/160c2522-c235-45c5-be7f-95f6046c7f47" />
 <img width="555" height="301" alt="image" src="https://github.com/user-attachments/assets/0f7c4103-82ae-44b2-ae19-d4637d534535" />
 - Sau đó quay trở lại phần Domains của Cloudflare để check nameservers, vui lòng chờ khoảng 1-2 tiếng, chậm nhất 24 giờ để cập nhật.
+
 # B. Cài đặt Ubuntu + Docker
 
 1.1. Cài đặt hệ điều hành Ubuntu 24.04.4 LTS
@@ -154,10 +155,10 @@ Kiểm tra nhanh: docker compose ps giúp biết container nào đang chạy xem
 healthcheck:
   test: ["CMD", "curl", "-f", "http://localhost:9630"]
 giới hạn resource cho một service: (tránh việc 1 service chiếm quá nhiều ram)
-'''deploy:
+```deploy:
   resources:
     limits:
-      memory: 512M'''
+      memory: 512M```
 <img width="1523" height="784" alt="image" src="https://github.com/user-attachments/assets/8dde5ff4-b83e-42f0-9c61-fa7ca9989d20" />
 - sử dụng lệnh: docker compose stats để quan sát lượng ram sử dụng bởi mỗi service
 <img width="1340" height="248" alt="image" src="https://github.com/user-attachments/assets/0509f3f0-dec1-44a9-b98c-fb4eebf9f19d" />
@@ -172,12 +173,12 @@ giới hạn resource cho một service: (tránh việc 1 service chiếm quá n
 <img width="1473" height="868" alt="image" src="https://github.com/user-attachments/assets/fb5bfda5-39da-4b43-bab9-0ccc5f3b38df" />
 2. Convert lệnh docker run ... sang dạng docker compose
 - Sửa file , thêm service cloudflared:
-  '''cloudflared:
+  ```cloudflared:
     image: cloudflare/cloudflared:latest
     command: tunnel --no-autoupdate run --token ABCXYZ....
     restart: always
     depends_on:
-      - nginx'''
+      - nginx```
 <img width="1083" height="583" alt="image" src="https://github.com/user-attachments/assets/08ae49c1-ef01-47d3-93a3-dc69a57ccdb6" />
 - Khai báo kết quả convert vào trong file docker-compose.yml
 3. Chạy lại docker compose
@@ -190,7 +191,7 @@ giới hạn resource cho một service: (tránh việc 1 service chiếm quá n
 <img width="1912" height="674" alt="image" src="https://github.com/user-attachments/assets/31b0428e-6f64-4971-ab38-02836b667dc4" />
 <img width="1742" height="310" alt="image" src="https://github.com/user-attachments/assets/89956d11-0f92-4e3e-99df-b31c9b818d6d" />
 
-# E. Câu hỏi về bài làm?
+#G . Câu hỏi về bài làm?
 
 1. Tại sao phải dùng Nginx làm Reverse Proxy mà không trỏ thẳng Tunnel vào Node-RED?
 Nginx làm gateway chung cho nhiều service (web + api).
@@ -225,7 +226,7 @@ mount folder → sync nhiều file (html, js…)
 
 Có, cập nhật ngay.
 
-Vì:' ./myweb:/myweb' là bind mount, container đọc trực tiếp file trên host → sửa là web đổi luôn, không cần restart.
+Vì:` ./myweb:/myweb` là bind mount, container đọc trực tiếp file trên host → sửa là web đổi luôn, không cần restart.
 
 4. docker-compose.yml khai báo các services có phần restart: always hoặc restart: unless-stopped : chúng để làm gì?
 
@@ -242,7 +243,7 @@ Dùng để:
 đều dùng chung 1 network.
 
 - Thêm vào cuối file:
-'''networks:
+```networks:
   mynet:
 Sửa services:
 services:
@@ -257,7 +258,7 @@ services:
   cloudflared:
     ...
     networks:
-      - mynet'''
+      - mynet```
   
 - Lợi ích:
 +containers gọi nhau bằng tên service
@@ -275,11 +276,11 @@ services:
 CF_TOKEN=eyJhIjoi....
 docker-compose.yml:
 
-'''cloudflared:
+```cloudflared:
   image: cloudflare/cloudflared
   command: tunnel --no-autoupdate run --token ${CF_TOKEN}
 .gitignore
-.en'''
+.en```
 
 - Quan trọng vì:
 + token là secret
