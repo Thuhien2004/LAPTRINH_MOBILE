@@ -3,6 +3,7 @@
 ### Nguyễn Thị Thu Hiền_K225480106015
 ### Deadline: 13/4/2026
 # A. Đăng ký miền cho cá nhân
+
 1. Đăng ký domain  của mắt bão, tên miền: thuhien04.io.vn
 <img width="1918" height="1078" alt="đăngký miền" src="https://github.com/user-attachments/assets/eb7dfec1-f23f-4d63-9bd6-f4a0ac0fd9c2" />
 - Tại giao diện chính trước đó của mắt bão , gõ tên miền mong muốn và thanh toán tiền :)))
@@ -18,6 +19,7 @@
 <img width="555" height="301" alt="image" src="https://github.com/user-attachments/assets/0f7c4103-82ae-44b2-ae19-d4637d534535" />
 - Sau đó quay trở lại phần Domains của Cloudflare để check nameservers, vui lòng chờ khoảng 1-2 tiếng, chậm nhất 24 giờ để cập nhật.
 # B. Cài đặt Ubuntu + Docker
+
 1.1. Cài đặt hệ điều hành Ubuntu 24.04.4 LTS
 Sử dụng một trong các công cụ để giả lập: VMware
 <img width="507" height="536" alt="image" src="https://github.com/user-attachments/assets/8d90cc92-567c-4cfd-8011-925fbf6f4b17" />
@@ -85,7 +87,9 @@ docker compose ps         # Xem trạng thái
 docker compose logs       # Xem logs'''
 7. Đảm bảo tường lửa trên Ubuntu đã cho phép các cổng 80, 1880, 9630 (Lệnh: sudo ufw allow ...)
 <img width="1050" height="312" alt="image" src="https://github.com/user-attachments/assets/cd6d2c41-84c7-49eb-bf1c-1dcb30581e72" />
+
 # C. Cấu hình docker compose:
+
 1. Tạo thư mục: ~/myapp, Chuyển vào trong thư mục ~/myapp
 <img width="912" height="53" alt="image" src="https://github.com/user-attachments/assets/9f2ba26e-64e9-48ed-955a-c6ecacba1316" /> 
 2. Tạo thư mục: ./myweb,  Tạo file ./myweb/index.html (với nội dung là thông tin cá nhân của em)
@@ -115,7 +119,9 @@ Chạy docker-compose lần đầu để Node-RED tự sinh file cấu hình tro
 <img width="1476" height="701" alt="image" src="https://github.com/user-attachments/assets/31d0d117-c87e-403d-b5b6-b5c8ea93e42b" />
 - Nếu truy cập địa chỉ cổng noded-red mà ra màn hình yêu cầu đăng nhập thì thành công:
 <img width="1759" height="889" alt="image" src="https://github.com/user-attachments/assets/603ea0f7-edb1-4793-8933-2fadbe4a42d4" />
+
 # E. Triển khai ứng dụng
+
 1. Chuyển vào trong thư mục ~/myapp,Gõ lệnh để docker compose chạy: sẽ run tất cả các service khai báo trong file docker-compose.yml
 <img width="1297" height="87" alt="image" src="https://github.com/user-attachments/assets/c2676ed7-73ce-40f1-b8ca-45cbca1f361c" />
 2. Kiểm tra các container đang chạy trong docker, nếu có cái nào bị restart cần tìm lỗi rồi edit lại docker-compose.yml
@@ -138,7 +144,9 @@ Chạy docker-compose lần đầu để Node-RED tự sinh file cấu hình tro
 - Sau đó ta test xem nó có gọi được API hay ko? Gõ trên thanh địa chỉ: http://10.170.151.31, hiện giao diện là được:
 <img width="1815" height="897" alt="image" src="https://github.com/user-attachments/assets/681a0b59-9088-4281-aaf1-601c53a4f440" />
 <img width="438" height="312" alt="image" src="https://github.com/user-attachments/assets/37cd7907-b510-4436-baa9-4c7222350d58" />
+
 # F. Gỡ lỗi:
+
 1. nếu có lỗi xẩy ra trong quá trình triển khai docker compose up -d
 Kiểm tra nhanh: docker compose ps giúp biết container nào đang chạy xem log, ví dụ: docker logs mynginx docker logs myapi
 <img width="1551" height="166" alt="image" src="https://github.com/user-attachments/assets/f05371e3-8b7f-436f-afa7-e95bb52c0070" />
@@ -146,21 +154,23 @@ Kiểm tra nhanh: docker compose ps giúp biết container nào đang chạy xem
 healthcheck:
   test: ["CMD", "curl", "-f", "http://localhost:9630"]
 giới hạn resource cho một service: (tránh việc 1 service chiếm quá nhiều ram)
-deploy:
+'''deploy:
   resources:
     limits:
-      memory: 512M
+      memory: 512M'''
 <img width="1523" height="784" alt="image" src="https://github.com/user-attachments/assets/8dde5ff4-b83e-42f0-9c61-fa7ca9989d20" />
 - sử dụng lệnh: docker compose stats để quan sát lượng ram sử dụng bởi mỗi service
 <img width="1340" height="248" alt="image" src="https://github.com/user-attachments/assets/0509f3f0-dec1-44a9-b98c-fb4eebf9f19d" />
 <img width="1154" height="93" alt="image" src="https://github.com/user-attachments/assets/5f265f02-028c-4eff-b42e-833d9a79001b" />
 <img width="1471" height="266" alt="image" src="https://github.com/user-attachments/assets/533206de-4d07-4fa9-9981-8a4b4942cc8b" />
+
 # G. Triển khai ứng dụng đến End-user
+
 1. Trong Cloudflare: Tạo tunnel (đường hầm), chọn loại triển khai cho docker
 - Truy cập vào Zero Trust của Cloudflare: Tìm mục Network , tạo tunnel mới
 <img width="1850" height="928" alt="image" src="https://github.com/user-attachments/assets/10922b02-2f92-4d21-adc4-96ada794bc2b" />
 <img width="1473" height="868" alt="image" src="https://github.com/user-attachments/assets/fb5bfda5-39da-4b43-bab9-0ccc5f3b38df" />
-3. Convert lệnh docker run ... sang dạng docker compose
+2. Convert lệnh docker run ... sang dạng docker compose
 - Sửa file , thêm service cloudflared:
   '''cloudflared:
     image: cloudflare/cloudflared:latest
@@ -170,42 +180,67 @@ deploy:
       - nginx'''
 <img width="1083" height="583" alt="image" src="https://github.com/user-attachments/assets/08ae49c1-ef01-47d3-93a3-dc69a57ccdb6" />
 - Khai báo kết quả convert vào trong file docker-compose.yml
-5. Chạy lại docker compose
+3. Chạy lại docker compose
 <img width="1367" height="440" alt="image" src="https://github.com/user-attachments/assets/915b7d42-c555-43bd-b0f2-f3bb3397504a" />
-6. Public ứng dụng bằng cách thêm 1 router trỏ tới container đang chạy trong docker, dữ liệu sẽ đi qua tunnel, url dạng sub-domain
+4. Public ứng dụng bằng cách thêm 1 router trỏ tới container đang chạy trong docker, dữ liệu sẽ đi qua tunnel, url dạng sub-domain
 <img width="1919" height="1028" alt="image" src="https://github.com/user-attachments/assets/fddcb3e0-ae88-49eb-a001-f8b72827893d" />
 <img width="1544" height="128" alt="image" src="https://github.com/user-attachments/assets/a39ab214-17cf-4e6c-816b-32dee645fb56" />
-7. Kiểm tra url sub-domain đã hoạt động public cho mọi end-user
+8. Kiểm tra url sub-domain đã hoạt động public cho mọi end-user
 <img width="1822" height="902" alt="image" src="https://github.com/user-attachments/assets/23992c82-97bd-47ee-9bce-c4585b7e5f8a" />
 <img width="1912" height="674" alt="image" src="https://github.com/user-attachments/assets/31b0428e-6f64-4971-ab38-02836b667dc4" />
 <img width="1742" height="310" alt="image" src="https://github.com/user-attachments/assets/89956d11-0f92-4e3e-99df-b31c9b818d6d" />
-# G. Câu hỏi về bài làm?
+
+# E. Câu hỏi về bài làm?
+
 1. Tại sao phải dùng Nginx làm Reverse Proxy mà không trỏ thẳng Tunnel vào Node-RED?
 Nginx làm gateway chung cho nhiều service (web + api).
+
 Có thể route:
+
 / → web tĩnh
+
 /api → Node-RED
+
 Dễ thêm auth, cache, SSL, rate-limit sau này.
+
 Không expose trực tiếp Node-RED ra internet → an toàn hơn.
+
 2. Sự khác biệt giữa việc Mount file và Mount thư mục trong Docker là gì?
+
 Mount file: ./nginx/nginx.conf:/etc/nginx/nginx.conf
+
 → chỉ mount 1 file
+
 Mount thư mục: ./myweb:/myweb
+
 → mount toàn bộ folder
+
 Khác nhau:
+
 mount file → chỉnh 1 config cụ thể
+
 mount folder → sync nhiều file (html, js…)
+
 3. Nếu thay đổi file index.html ở máy Ubuntu, nội dung trên web có thay đổi ngay không? Tại sao?
+
 Có, cập nhật ngay.
+
 Vì:' ./myweb:/myweb' là bind mount, container đọc trực tiếp file trên host → sửa là web đổi luôn, không cần restart.
+
 4. docker-compose.yml khai báo các services có phần restart: always hoặc restart: unless-stopped : chúng để làm gì?
+
 - restart: always → container crash sẽ tự chạy lại
+  
 - restart: unless-stopped → chạy lại trừ khi user stop thủ công
+
 Dùng để:
 + giữ service luôn hoạt động
+
 + tự recover khi lỗi
+
 5. Cách khai báo để tất cả các services đều dùng chung 1 network? lợi ích của việc khai báo này là gì? Sửa đổi file docker-compose để tất cả các service
 đều dùng chung 1 network.
+
 - Thêm vào cuối file:
 '''networks:
   mynet:
@@ -223,36 +258,58 @@ services:
     ...
     networks:
       - mynet'''
+  
 - Lợi ích:
 +containers gọi nhau bằng tên service
+
 +proxy_pass http://nodered:1880
+
 +cô lập network riêng
+
 +bảo mật hơn
+
 6. Tìm cách đưa Cloudflare Token vào trong file .env rồi sau đó thêm .env vào file .gitignore trước khi push code lên github. Tại sao nói đây là điều quan trọng về bảo mật mã nguồn?
+
 - File .env:
+
 CF_TOKEN=eyJhIjoi....
 docker-compose.yml:
+
 '''cloudflared:
   image: cloudflare/cloudflared
   command: tunnel --no-autoupdate run --token ${CF_TOKEN}
 .gitignore
 .en'''
+
 - Quan trọng vì:
 + token là secret
+
 + push lên GitHub → người khác dùng tunnel của mày
+
 + có thể chiếm domain public
+
 7. Tại sao chúng ta nên thêm hậu tố :ro khi mount file cấu hình Nginx?
+
 - Lợi ích:
 + container không sửa được config
+  
 + tránh bị ghi đè
+  
 + tăng bảo mật
+  
 8. Khi dùng Cloudflare Tunnel: có cần thiết phải mở cổng cho các service nữa không?
 --> Không cần
+   
 + mở port 80
+
 + mở port 1880
+
 + NAT / firewall
+
 - Đó là lợi ích lớn nhất:
+
 + không expose port public
+
 + an toàn hơn.
 
 
