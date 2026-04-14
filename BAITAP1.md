@@ -19,8 +19,7 @@
 - Sau đó quay trở lại phần Domains của Cloudflare để check nameservers, vui lòng chờ khoảng 1-2 tiếng, chậm nhất 24 giờ để cập nhật.
 # B. Cài đặt Ubuntu + Docker
 1. Cài đặt hệ điều hành Ubuntu 24.04.4 LTS
+Sử dụng một trong các công cụ để giả lập: VMware
 
-Sử dụng một trong các công cụ để giả lập: VirutualBox
 
-Download file iso để cài đặt.
 Cấu hình mạng trong Ubuntu (và công cụ giả lập) để cho phép truy cập SSH vào Ubuntu từ cmd của windows
