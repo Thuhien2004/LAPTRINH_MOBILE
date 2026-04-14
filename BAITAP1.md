@@ -138,8 +138,23 @@ Chạy docker-compose lần đầu để Node-RED tự sinh file cấu hình tro
 - Sau đó ta test xem nó có gọi được API hay ko? Gõ trên thanh địa chỉ: http://10.170.151.31, hiện giao diện là được:
 <img width="1815" height="897" alt="image" src="https://github.com/user-attachments/assets/681a0b59-9088-4281-aaf1-601c53a4f440" />
 <img width="438" height="312" alt="image" src="https://github.com/user-attachments/assets/37cd7907-b510-4436-baa9-4c7222350d58" />
-
-
+# F. Gỡ lỗi:
+1. nếu có lỗi xẩy ra trong quá trình triển khai docker compose up -d
+Kiểm tra nhanh: docker compose ps giúp biết container nào đang chạy xem log, ví dụ: docker logs mynginx docker logs myapi
+<img width="1551" height="166" alt="image" src="https://github.com/user-attachments/assets/f05371e3-8b7f-436f-afa7-e95bb52c0070" />
+2. Thêm healthcheck cho myapi trong file docker-compose.yml
+healthcheck:
+  test: ["CMD", "curl", "-f", "http://localhost:9630"]
+giới hạn resource cho một service: (tránh việc 1 service chiếm quá nhiều ram)
+deploy:
+  resources:
+    limits:
+      memory: 512M
+<img width="1523" height="784" alt="image" src="https://github.com/user-attachments/assets/8dde5ff4-b83e-42f0-9c61-fa7ca9989d20" />
+- sử dụng lệnh: docker compose stats để quan sát lượng ram sử dụng bởi mỗi service
+<img width="1340" height="248" alt="image" src="https://github.com/user-attachments/assets/0509f3f0-dec1-44a9-b98c-fb4eebf9f19d" />
+<img width="1154" height="93" alt="image" src="https://github.com/user-attachments/assets/5f265f02-028c-4eff-b42e-833d9a79001b" />
+<img width="1471" height="266" alt="image" src="https://github.com/user-attachments/assets/533206de-4d07-4fa9-9981-8a4b4942cc8b" />
 
 
 
