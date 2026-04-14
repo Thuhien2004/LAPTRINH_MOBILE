@@ -18,7 +18,7 @@
 <img width="555" height="301" alt="image" src="https://github.com/user-attachments/assets/0f7c4103-82ae-44b2-ae19-d4637d534535" />
 - Sau đó quay trở lại phần Domains của Cloudflare để check nameservers, vui lòng chờ khoảng 1-2 tiếng, chậm nhất 24 giờ để cập nhật.
 # B. Cài đặt Ubuntu + Docker
-1. Cài đặt hệ điều hành Ubuntu 24.04.4 LTS
+1.1. Cài đặt hệ điều hành Ubuntu 24.04.4 LTS
 Sử dụng một trong các công cụ để giả lập: VMware
 <img width="507" height="536" alt="image" src="https://github.com/user-attachments/assets/8d90cc92-567c-4cfd-8011-925fbf6f4b17" />
 - Trước đó e đã có file sẵn tải ubuntu.iso và Vmware vậy em chỉ cần Create New Vitual Machine là được. Chọn bản iso ubuntu đã có.
@@ -31,7 +31,27 @@ Sử dụng một trong các công cụ để giả lập: VMware
 <img width="1919" height="1047" alt="image" src="https://github.com/user-attachments/assets/9311ff7d-9646-471d-b85a-b4e2a95ae425" />
 - Chờ đợi Ubuntu cài đặt. Sau đó khởi động lại
 - <img width="1909" height="1000" alt="image" src="https://github.com/user-attachments/assets/340a4d88-c5eb-4743-a1ea-11949ab79a34" />
-2. Cấu hình mạng trong Ubuntu (và công cụ giả lập) để cho phép truy cập SSH vào Ubuntu từ cmd của windows
+1.2. Cấu hình mạng trong Ubuntu (và công cụ giả lập) để cho phép truy cập SSH vào Ubuntu từ cmd của windows
 - Cài SSH trên ubuntu bằng cách gõ dòng lệnh trên terminal.
 <img width="1089" height="178" alt="image" src="https://github.com/user-attachments/assets/8ffe8119-5cb9-41d7-9ef8-16fe44d86d5a" />
+- Vào CMD trên window gõ ssh+"tenmayao"@"ip ảo"
+<img width="1887" height="1079" alt="image" src="https://github.com/user-attachments/assets/7a045156-5989-4bd2-be6f-a6375e13226b" />
+2. Tìm hiểu các lệnh cơ bản ubuntu
+- Liệt kê các file trong thư mục: ls
+<img width="1047" height="52" alt="image" src="https://github.com/user-attachments/assets/8981461a-0036-4448-a404-2fcb2faf4fb3" />
+- Tạo thư mục: mkdir nameFolder
+
+Chuyển thư mục làm việc: cd path
+
+Copy file: cp file_nguồn path/file_đích
+
+Thay đổi quyền thao tác file: sudo chmod xxx filename
+
+Edit file: sudo nano tenfile
+
+CTRL+o : lưu nội dung sau khi edit
+
+CTRL+x : thoát edit file
+
+Xem ip của máy ubuntu: ip -4 addr
 
