@@ -178,6 +178,7 @@ deploy:
 7. Kiểm tra url sub-domain đã hoạt động public cho mọi end-user
 <img width="1822" height="902" alt="image" src="https://github.com/user-attachments/assets/23992c82-97bd-47ee-9bce-c4585b7e5f8a" />
 <img width="1912" height="674" alt="image" src="https://github.com/user-attachments/assets/31b0428e-6f64-4971-ab38-02836b667dc4" />
+<img width="1742" height="310" alt="image" src="https://github.com/user-attachments/assets/89956d11-0f92-4e3e-99df-b31c9b818d6d" />
 
 
 
