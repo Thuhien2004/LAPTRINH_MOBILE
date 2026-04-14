@@ -106,8 +106,16 @@ Cấu hình web server cổng 80
 server_name là sub-domain (sub-domain tuỳ ý của em)
 location / trỏ tới root là thư mục /myweb
 location /api dùng proxy_pass trỏ tới 1 (hoặc nhiều) node http_in của nodered
+<img width="1560" height="789" alt="image" src="https://github.com/user-attachments/assets/6c1d4f12-83af-403a-bf66-e39e4dc7f081" />
 7. Edit file ./nodered/settings.js để nodered bắt buộc đăng nhập
 Chạy docker-compose lần đầu để Node-RED tự sinh file cấu hình trong thư mục ./nodered, sau đó mới tiến hành sửa settings.js và restart lại container
+- Trước tiên phải tạo mật khẩu bcrypt:
+<img width="1457" height="86" alt="image" src="https://github.com/user-attachments/assets/f77dd991-9bfa-46dc-b803-ac5460d06b8d" />
+- Sau đó edit phần adminAuth trong file và thay mật khẩu hash vào:
+<img width="1476" height="701" alt="image" src="https://github.com/user-attachments/assets/31d0d117-c87e-403d-b5b6-b5c8ea93e42b" />
+- Nếu truy cập địa chỉ cổng noded-red mà ra màn hình yêu cầu đăng nhập thì thành công:
+<img width="1759" height="889" alt="image" src="https://github.com/user-attachments/assets/603ea0f7-edb1-4793-8933-2fadbe4a42d4" />
+
 
 
 
