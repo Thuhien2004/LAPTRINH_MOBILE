@@ -55,4 +55,39 @@ Sử dụng một trong các công cụ để giả lập: VMware
 <img width="1119" height="104" alt="image" src="https://github.com/user-attachments/assets/f0ff8d21-ed58-4518-8ca0-9ca4d65463d1" />
 - Xem ip của máy ubuntu: ip -4 addr
 <img width="1266" height="195" alt="image" src="https://github.com/user-attachments/assets/069e3f26-9321-44f5-9711-9a4dc2d225cb" />
+3. Cài đặt docker cho ubuntu
+- Cập nhật package: sudo apt update
+<img width="1034" height="213" alt="image" src="https://github.com/user-attachments/assets/02bdc091-20a6-44f0-a459-901575e7ba79" />
+- Cài các gói cần thiết: sudo apt install -y ca-certificates curl gnupg
+<img width="1397" height="561" alt="image" src="https://github.com/user-attachments/assets/33981d3d-53d4-4dd0-b366-5e6a30442cbe" />
+- Thêm GPG key của Docker: sudo install -m 0755 -d /etc/apt/keyringscurl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o/etc/apt/keyrings/docker.gpg
+
+- Thêm repository Docker: echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(./etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list.
+
+- Cài Docker: sudo apt update, sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
