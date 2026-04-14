@@ -155,7 +155,29 @@ deploy:
 <img width="1340" height="248" alt="image" src="https://github.com/user-attachments/assets/0509f3f0-dec1-44a9-b98c-fb4eebf9f19d" />
 <img width="1154" height="93" alt="image" src="https://github.com/user-attachments/assets/5f265f02-028c-4eff-b42e-833d9a79001b" />
 <img width="1471" height="266" alt="image" src="https://github.com/user-attachments/assets/533206de-4d07-4fa9-9981-8a4b4942cc8b" />
-
+# G. Triển khai ứng dụng đến End-user
+1. Trong Cloudflare: Tạo tunnel (đường hầm), chọn loại triển khai cho docker
+- Truy cập vào Zero Trust của Cloudflare: Tìm mục Network , tạo tunnel mới
+<img width="1850" height="928" alt="image" src="https://github.com/user-attachments/assets/10922b02-2f92-4d21-adc4-96ada794bc2b" />
+<img width="1473" height="868" alt="image" src="https://github.com/user-attachments/assets/fb5bfda5-39da-4b43-bab9-0ccc5f3b38df" />
+3. Convert lệnh docker run ... sang dạng docker compose
+- Sửa file , thêm service cloudflared:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run --token ABCXYZ....
+    restart: always
+    depends_on:
+      - nginx
+<img width="1083" height="583" alt="image" src="https://github.com/user-attachments/assets/08ae49c1-ef01-47d3-93a3-dc69a57ccdb6" />
+- Khai báo kết quả convert vào trong file docker-compose.yml
+5. Chạy lại docker compose
+<img width="1367" height="440" alt="image" src="https://github.com/user-attachments/assets/915b7d42-c555-43bd-b0f2-f3bb3397504a" />
+6. Public ứng dụng bằng cách thêm 1 router trỏ tới container đang chạy trong docker, dữ liệu sẽ đi qua tunnel, url dạng sub-domain
+<img width="1919" height="1028" alt="image" src="https://github.com/user-attachments/assets/fddcb3e0-ae88-49eb-a001-f8b72827893d" />
+<img width="1544" height="128" alt="image" src="https://github.com/user-attachments/assets/a39ab214-17cf-4e6c-816b-32dee645fb56" />
+7. Kiểm tra url sub-domain đã hoạt động public cho mọi end-user
+<img width="1822" height="902" alt="image" src="https://github.com/user-attachments/assets/23992c82-97bd-47ee-9bce-c4585b7e5f8a" />
+<img width="1912" height="674" alt="image" src="https://github.com/user-attachments/assets/31b0428e-6f64-4971-ab38-02836b667dc4" />
 
 
 
