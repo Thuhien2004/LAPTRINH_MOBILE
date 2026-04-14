@@ -89,13 +89,15 @@ docker compose logs       # Xem logs
 1. Tạo thư mục: ~/myapp, Chuyển vào trong thư mục ~/myapp
 <img width="912" height="53" alt="image" src="https://github.com/user-attachments/assets/9f2ba26e-64e9-48ed-955a-c6ecacba1316" /> 
 2. Tạo thư mục: ./myweb,  Tạo file ./myweb/index.html (với nội dung là thông tin cá nhân của em)
-
-5. Tạo file docker-compose.yml để nó sẽ có các dịch vụ sau:
-   
-Khai báo sử dụng nodered/node-red, cổng 1880, dữ liệu nằm tại thư mục ./nodered
-Khai báo sử dụng nginx, cổng 80, cấu hình trong file ./nginx/nginx.conf
-Mount thư mục ./myweb thành thư mục /myweb trong nginx
-Mount file ./nginx/nginx.conf vào file /etc/nginx/nginx.conf trong nginx
+<img width="967" height="93" alt="image" src="https://github.com/user-attachments/assets/adfd49f2-2017-46b6-9ab6-9ef88407b9e3" />
+3. Tạo file docker-compose.yml để nó sẽ có các dịch vụ sau: 
+- Khai báo sử dụng nodered/node-red, cổng 1880, dữ liệu nằm tại thư mục ./nodered
+- Khai báo sử dụng nginx, cổng 80, cấu hình trong file ./nginx/nginx.conf
+<img width="1507" height="718" alt="image" src="https://github.com/user-attachments/assets/99f4294c-5868-42c6-8b60-eb4fb11d88c4" />
+<img width="1131" height="121" alt="image" src="https://github.com/user-attachments/assets/86e678c2-0356-4dfa-9978-7e3c488c702a" />
+- Mount thư mục ./myweb thành thư mục /myweb trong nginx
+- Mount file ./nginx/nginx.conf vào file /etc/nginx/nginx.conf trong nginx
+<img width="1507" height="718" alt="image" src="https://github.com/user-attachments/assets/99f4294c-5868-42c6-8b60-eb4fb11d88c4" />
 6. Edit file ./nginx/nginx.conf để:
 Cấu hình web server cổng 80
 server_name là sub-domain (sub-domain tuỳ ý của em)
