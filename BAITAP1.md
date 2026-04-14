@@ -61,17 +61,52 @@ Sử dụng một trong các công cụ để giả lập: VMware
 - Cài các gói cần thiết: sudo apt install -y ca-certificates curl gnupg
 <img width="1397" height="561" alt="image" src="https://github.com/user-attachments/assets/33981d3d-53d4-4dd0-b366-5e6a30442cbe" />
 - Thêm GPG key của Docker: sudo install -m 0755 -d /etc/apt/keyringscurl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o/etc/apt/keyrings/docker.gpg
-
 - Thêm repository Docker: echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(./etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list.
-
 - Cài Docker: sudo apt update, sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+<img width="1692" height="906" alt="image" src="https://github.com/user-attachments/assets/ba060f73-8212-4ec2-af13-e26384522754" />
+4. Kiểm tra phiên bản docker vừa cài đặt.
+<img width="1247" height="94" alt="image" src="https://github.com/user-attachments/assets/d16ac843-9749-4cef-945e-4acfa837fd0a" />
+- Gõ docker --version , docker compose -version
+5. Cấu hình để docker chạy mà không cần tiền tố sudo
+<img width="1243" height="50" alt="image" src="https://github.com/user-attachments/assets/33bb3a4d-534b-4b95-a49f-fe1840c479b4" />
+- Gõ lệnh: sudo usermod -aG docker nguyenthithuhien, newgrp docker
+6. Tìm hiểu tập lệnh của docker và docker compose
+docker ps              # Xem container đang chạy
+docker ps -a           # Xem tất cả container
+docker images          # Xem danh sách image
+docker pull <image>    # Tải image về
+docker run <image>     # Chạy container
+docker stop <id>       # Dừng container
+docker rm <id>         # Xóa container
+docker rmi <image>     # Xóa image
+docker compose up -d      # Chạy các service
+docker compose down       # Dừng các service
+docker compose ps         # Xem trạng thái
+docker compose logs       # Xem logs
+7. Đảm bảo tường lửa trên Ubuntu đã cho phép các cổng 80, 1880, 9630 (Lệnh: sudo ufw allow ...)
+<img width="1050" height="312" alt="image" src="https://github.com/user-attachments/assets/cd6d2c41-84c7-49eb-bf1c-1dcb30581e72" />
+# C. Cấu hình docker compose:
+1. Tạo thư mục: ~/myapp
 
+2. Chuyển vào trong thư mục ~/myapp
+   
+3. Tạo thư mục: ./myweb
 
-
-
-
-
-
+4. Tạo file ./myweb/index.html (với nội dung là thông tin cá nhân của em)
+  
+5. Tạo file docker-compose.yml để nó sẽ có các dịch vụ sau:
+   
+Khai báo sử dụng nodered/node-red, cổng 1880, dữ liệu nằm tại thư mục ./nodered
+Khai báo sử dụng nginx, cổng 80, cấu hình trong file ./nginx/nginx.conf
+Mount thư mục ./myweb thành thư mục /myweb trong nginx
+Mount file ./nginx/nginx.conf vào file /etc/nginx/nginx.conf trong nginx
+6. Edit file ./nginx/nginx.conf để:
+Cấu hình web server cổng 80
+server_name là sub-domain (sub-domain tuỳ ý của em)
+location / trỏ tới root là thư mục /myweb
+location /api dùng proxy_pass trỏ tới 1 (hoặc nhiều) node http_in của nodered
+7. Edit file ./nodered/settings.js để nodered bắt buộc đăng nhập
+Chạy docker-compose lần đầu để Node-RED tự sinh file cấu hình trong thư mục ./nodered, sau đó mới tiến hành sửa settings.js và restart lại container
 
 
 
