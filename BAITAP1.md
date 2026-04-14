@@ -123,8 +123,17 @@ Chạy docker-compose lần đầu để Node-RED tự sinh file cấu hình tro
 3. Kiểm tra kiểm thử các service đang chạy độc lập thông qua ip và port của nó: ví dụ mở trình duyệt ip_ubuntu:1880 để check nodered đã chạy chưa
    ước đó đã kiểm tra rồi, có giao diện đăng nhập nodered rồi.
 4.Sử dụng nodered: kéo nodered http_in , http_response, function : để tạo api get đơn giản (dùng cho /api proxy_pass của nginx)
-
-
+<img width="714" height="191" alt="image" src="https://github.com/user-attachments/assets/d2608f40-7d46-4e1b-ba9b-3a1929680871" />
+- Sau đó edit các thành phần ở mỗi noded-red, xong chạy Deploy:
+<img width="829" height="884" alt="image" src="https://github.com/user-attachments/assets/dba89f4f-8d70-4953-895b-45eda05fb277" />
+<img width="836" height="858" alt="image" src="https://github.com/user-attachments/assets/4da2fa68-5dd2-4222-ad86-401771679b25" />
+<img width="1816" height="825" alt="image" src="https://github.com/user-attachments/assets/1b72e3e5-3b32-4457-b597-d6ec410b7d81" />
+- Ta test API trực tiếp bằng cách gõ trên thanh địa chỉ: http://10.170.151.31:1880/hello:
+<img width="1020" height="227" alt="image" src="https://github.com/user-attachments/assets/fe58a443-20db-4678-a789-b106a1405e18" />
+- Ta test nginx proxy(/api):
+<img width="1547" height="366" alt="image" src="https://github.com/user-attachments/assets/e336c7a6-f14c-4f41-87e7-98e3cce2eb31" />
+--> oke :))
+5. Sửa file ./myweb/index.html : thêm code html+js để sử dụng được api đã khai báo proxy_pass (thực ra là sử dụng nodered http_in hoặc sử dụng service myapi)
 
 
 
