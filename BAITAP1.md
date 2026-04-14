@@ -20,6 +20,16 @@
 # B. Cài đặt Ubuntu + Docker
 1. Cài đặt hệ điều hành Ubuntu 24.04.4 LTS
 Sử dụng một trong các công cụ để giả lập: VMware
-
+<img width="507" height="536" alt="image" src="https://github.com/user-attachments/assets/8d90cc92-567c-4cfd-8011-925fbf6f4b17" />
+- Trước đó e đã có file sẵn tải ubuntu.iso và Vmware vậy em chỉ cần Create New Vitual Machine là được. Chọn bản iso ubuntu đã có.
+<img width="617" height="566" alt="image" src="https://github.com/user-attachments/assets/eba43fc7-3bc9-4600-956c-452abc197e17" />
+- nhập username và passwword
+- Chọn
+<img width="598" height="583" alt="image" src="https://github.com/user-attachments/assets/d6e7d0c2-50f2-4e2a-af10-fd6991d41120" />
+- Chọn brige network, sau đó chọn disk 20gb
+<img width="1908" height="1073" alt="image" src="https://github.com/user-attachments/assets/2c7ebf53-2415-4912-ae79-c58f2bd3076a" />
+<img width="1919" height="1047" alt="image" src="https://github.com/user-attachments/assets/9311ff7d-9646-471d-b85a-b4e2a95ae425" />
+- Chờ đợi Ubuntu cài đặt. Sau đó khởi động lại
+- <img width="1909" height="1000" alt="image" src="https://github.com/user-attachments/assets/340a4d88-c5eb-4743-a1ea-11949ab79a34" />
 
 Cấu hình mạng trong Ubuntu (và công cụ giả lập) để cho phép truy cập SSH vào Ubuntu từ cmd của windows
