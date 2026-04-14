@@ -50,28 +50,28 @@ Sử dụng một trong các công cụ để giả lập: VMware
 <img width="1262" height="113" alt="image" src="https://github.com/user-attachments/assets/41367dfc-126b-4fa5-97de-bf823cbf5ed3" />
 - Thay đổi quyền thao tác file: sudo chmod xxx filename
 <img width="1313" height="230" alt="image" src="https://github.com/user-attachments/assets/2a1b353b-17c8-48e3-9be4-09bbe31d8e51" />
-- Edit file: sudo nano tenfile
+- Edit file: 'sudo nano tenfile'
 <img width="1489" height="791" alt="image" src="https://github.com/user-attachments/assets/7b285902-c60e-4d91-ab52-7e91303905b3" />
 <img width="1119" height="104" alt="image" src="https://github.com/user-attachments/assets/f0ff8d21-ed58-4518-8ca0-9ca4d65463d1" />
 - Xem ip của máy ubuntu: ip -4 addr
 <img width="1266" height="195" alt="image" src="https://github.com/user-attachments/assets/069e3f26-9321-44f5-9711-9a4dc2d225cb" />
 3. Cài đặt docker cho ubuntu
-- Cập nhật package: sudo apt update
+- Cập nhật package: 'sudo apt update'
 <img width="1034" height="213" alt="image" src="https://github.com/user-attachments/assets/02bdc091-20a6-44f0-a459-901575e7ba79" />
-- Cài các gói cần thiết: sudo apt install -y ca-certificates curl gnupg
+- Cài các gói cần thiết: 'sudo apt install -y ca-certificates curl gnupg'
 <img width="1397" height="561" alt="image" src="https://github.com/user-attachments/assets/33981d3d-53d4-4dd0-b366-5e6a30442cbe" />
-- Thêm GPG key của Docker: sudo install -m 0755 -d /etc/apt/keyringscurl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o/etc/apt/keyrings/docker.gpg
+- Thêm GPG key của Docker: 'sudo install -m 0755 -d /etc/apt/keyringscurl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o/etc/apt/keyrings/docker.gpg'
 - Thêm repository Docker: echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(./etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list.
-- Cài Docker: sudo apt update, sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+- Cài Docker: 'sudo apt update', 'sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin'
 <img width="1692" height="906" alt="image" src="https://github.com/user-attachments/assets/ba060f73-8212-4ec2-af13-e26384522754" />
 4. Kiểm tra phiên bản docker vừa cài đặt.
 <img width="1247" height="94" alt="image" src="https://github.com/user-attachments/assets/d16ac843-9749-4cef-945e-4acfa837fd0a" />
-- Gõ docker --version , docker compose -version
+- Gõ 'docker --version' , 'docker compose -version'
 5. Cấu hình để docker chạy mà không cần tiền tố sudo
 <img width="1243" height="50" alt="image" src="https://github.com/user-attachments/assets/33bb3a4d-534b-4b95-a49f-fe1840c479b4" />
-- Gõ lệnh: sudo usermod -aG docker nguyenthithuhien, newgrp docker
+- Gõ lệnh: 'sudo usermod -aG docker nguyenthithuhien','newgrp docker'
 6. Tìm hiểu tập lệnh của docker và docker compose
-docker ps              # Xem container đang chạy
+'''docker ps              # Xem container đang chạy
 docker ps -a           # Xem tất cả container
 docker images          # Xem danh sách image
 docker pull <image>    # Tải image về
@@ -82,7 +82,7 @@ docker rmi <image>     # Xóa image
 docker compose up -d      # Chạy các service
 docker compose down       # Dừng các service
 docker compose ps         # Xem trạng thái
-docker compose logs       # Xem logs
+docker compose logs       # Xem logs'''
 7. Đảm bảo tường lửa trên Ubuntu đã cho phép các cổng 80, 1880, 9630 (Lệnh: sudo ufw allow ...)
 <img width="1050" height="312" alt="image" src="https://github.com/user-attachments/assets/cd6d2c41-84c7-49eb-bf1c-1dcb30581e72" />
 # C. Cấu hình docker compose:
@@ -162,12 +162,12 @@ deploy:
 <img width="1473" height="868" alt="image" src="https://github.com/user-attachments/assets/fb5bfda5-39da-4b43-bab9-0ccc5f3b38df" />
 3. Convert lệnh docker run ... sang dạng docker compose
 - Sửa file , thêm service cloudflared:
-  cloudflared:
+  '''cloudflared:
     image: cloudflare/cloudflared:latest
     command: tunnel --no-autoupdate run --token ABCXYZ....
     restart: always
     depends_on:
-      - nginx
+      - nginx'''
 <img width="1083" height="583" alt="image" src="https://github.com/user-attachments/assets/08ae49c1-ef01-47d3-93a3-dc69a57ccdb6" />
 - Khai báo kết quả convert vào trong file docker-compose.yml
 5. Chạy lại docker compose
@@ -179,7 +179,6 @@ deploy:
 <img width="1822" height="902" alt="image" src="https://github.com/user-attachments/assets/23992c82-97bd-47ee-9bce-c4585b7e5f8a" />
 <img width="1912" height="674" alt="image" src="https://github.com/user-attachments/assets/31b0428e-6f64-4971-ab38-02836b667dc4" />
 <img width="1742" height="310" alt="image" src="https://github.com/user-attachments/assets/89956d11-0f92-4e3e-99df-b31c9b818d6d" />
-
 # G. Câu hỏi về bài làm?
 1. Tại sao phải dùng Nginx làm Reverse Proxy mà không trỏ thẳng Tunnel vào Node-RED?
 Nginx làm gateway chung cho nhiều service (web + api).
@@ -189,20 +188,16 @@ Có thể route:
 Dễ thêm auth, cache, SSL, rate-limit sau này.
 Không expose trực tiếp Node-RED ra internet → an toàn hơn.
 2. Sự khác biệt giữa việc Mount file và Mount thư mục trong Docker là gì?
-Mount file
-./nginx/nginx.conf:/etc/nginx/nginx.conf
+Mount file: ./nginx/nginx.conf:/etc/nginx/nginx.conf
 → chỉ mount 1 file
-Mount thư mục
-./myweb:/myweb
+Mount thư mục: ./myweb:/myweb
 → mount toàn bộ folder
 Khác nhau:
 mount file → chỉnh 1 config cụ thể
 mount folder → sync nhiều file (html, js…)
 3. Nếu thay đổi file index.html ở máy Ubuntu, nội dung trên web có thay đổi ngay không? Tại sao?
 Có, cập nhật ngay.
-Vì:
-./myweb:/myweb
-là bind mount, container đọc trực tiếp file trên host → sửa là web đổi luôn, không cần restart.
+Vì:' ./myweb:/myweb' là bind mount, container đọc trực tiếp file trên host → sửa là web đổi luôn, không cần restart.
 4. docker-compose.yml khai báo các services có phần restart: always hoặc restart: unless-stopped : chúng để làm gì?
 - restart: always → container crash sẽ tự chạy lại
 - restart: unless-stopped → chạy lại trừ khi user stop thủ công
@@ -212,7 +207,7 @@ Dùng để:
 5. Cách khai báo để tất cả các services đều dùng chung 1 network? lợi ích của việc khai báo này là gì? Sửa đổi file docker-compose để tất cả các service
 đều dùng chung 1 network.
 - Thêm vào cuối file:
-networks:
+'''networks:
   mynet:
 Sửa services:
 services:
@@ -227,7 +222,7 @@ services:
   cloudflared:
     ...
     networks:
-      - mynet
+      - mynet'''
 - Lợi ích:
 +containers gọi nhau bằng tên service
 +proxy_pass http://nodered:1880
@@ -237,11 +232,11 @@ services:
 - File .env:
 CF_TOKEN=eyJhIjoi....
 docker-compose.yml:
-cloudflared:
+'''cloudflared:
   image: cloudflare/cloudflared
   command: tunnel --no-autoupdate run --token ${CF_TOKEN}
 .gitignore
-.en
+.en'''
 - Quan trọng vì:
 + token là secret
 + push lên GitHub → người khác dùng tunnel của mày
