@@ -180,9 +180,85 @@ deploy:
 <img width="1912" height="674" alt="image" src="https://github.com/user-attachments/assets/31b0428e-6f64-4971-ab38-02836b667dc4" />
 <img width="1742" height="310" alt="image" src="https://github.com/user-attachments/assets/89956d11-0f92-4e3e-99df-b31c9b818d6d" />
 
-
-
-
+# G. Câu hỏi về bài làm?
+1. Tại sao phải dùng Nginx làm Reverse Proxy mà không trỏ thẳng Tunnel vào Node-RED?
+Nginx làm gateway chung cho nhiều service (web + api).
+Có thể route:
+/ → web tĩnh
+/api → Node-RED
+Dễ thêm auth, cache, SSL, rate-limit sau này.
+Không expose trực tiếp Node-RED ra internet → an toàn hơn.
+3. Sự khác biệt giữa việc Mount file và Mount thư mục trong Docker là gì?
+Mount file
+./nginx/nginx.conf:/etc/nginx/nginx.conf
+→ chỉ mount 1 file
+Mount thư mục
+./myweb:/myweb
+→ mount toàn bộ folder
+Khác nhau:
+mount file → chỉnh 1 config cụ thể
+mount folder → sync nhiều file (html, js…)
+5. Nếu thay đổi file index.html ở máy Ubuntu, nội dung trên web có thay đổi ngay không? Tại sao?
+Có, cập nhật ngay.
+Vì:
+./myweb:/myweb
+là bind mount, container đọc trực tiếp file trên host → sửa là web đổi luôn, không cần restart.
+6. docker-compose.yml khai báo các services có phần restart: always hoặc restart: unless-stopped : chúng để làm gì?
+restart: always → container crash sẽ tự chạy lại
+restart: unless-stopped → chạy lại trừ khi user stop thủ công
+Dùng để:
+giữ service luôn hoạt động
+tự recover khi lỗi
+8. Cách khai báo để tất cả các services đều dùng chung 1 network? lợi ích của việc khai báo này là gì? Sửa đổi file docker-compose để tất cả các service
+đều dùng chung 1 network.
+- Thêm vào cuối file:
+networks:
+  mynet:
+Sửa services:
+services:
+  nginx:
+    ...
+    networks:
+      - mynet
+  nodered:
+    ...
+    networks:
+      - mynet
+  cloudflared:
+    ...
+    networks:
+      - mynet
+- Lợi ích:
++containers gọi nhau bằng tên service
++proxy_pass http://nodered:1880
++cô lập network riêng
++bảo mật hơn
+9. Tìm cách đưa Cloudflare Token vào trong file .env rồi sau đó thêm .env vào file .gitignore trước khi push code lên github. Tại sao nói đây là điều quan trọng về bảo mật mã nguồn?
+- File .env:
+CF_TOKEN=eyJhIjoi....
+docker-compose.yml:
+cloudflared:
+  image: cloudflare/cloudflared
+  command: tunnel --no-autoupdate run --token ${CF_TOKEN}
+.gitignore
+.en
+- Quan trọng vì:
++ token là secret
++ push lên GitHub → người khác dùng tunnel của mày
++ có thể chiếm domain public
+10. Tại sao chúng ta nên thêm hậu tố :ro khi mount file cấu hình Nginx?
+- Lợi ích:
++ container không sửa được config
++ tránh bị ghi đè
++ tăng bảo mật
+11. Khi dùng Cloudflare Tunnel: có cần thiết phải mở cổng cho các service nữa không?
+--> Không cần
++ mở port 80
++ mở port 1880
++ NAT / firewall
+- Đó là lợi ích lớn nhất:
++ không expose port public
++ an toàn hơn.
 
 
 
