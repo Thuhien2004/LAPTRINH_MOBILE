@@ -98,6 +98,9 @@ docker compose logs       # Xem logs
 - Mount thư mục ./myweb thành thư mục /myweb trong nginx
 - Mount file ./nginx/nginx.conf vào file /etc/nginx/nginx.conf trong nginx
 <img width="1507" height="718" alt="image" src="https://github.com/user-attachments/assets/99f4294c-5868-42c6-8b60-eb4fb11d88c4" />
+- Sau khi hoàn tất các bước, ta chạy địa chỉ localhost của web, node-red . Hiện nội dung file index.html và giao diện nodered là được.
+<img width="1911" height="975" alt="image" src="https://github.com/user-attachments/assets/e62a1461-22fc-44ba-9aba-6ca465253512" />
+<img width="1709" height="350" alt="image" src="https://github.com/user-attachments/assets/066e8abc-3bae-41c6-bb30-0c5e485f754b" />
 6. Edit file ./nginx/nginx.conf để:
 Cấu hình web server cổng 80
 server_name là sub-domain (sub-domain tuỳ ý của em)
