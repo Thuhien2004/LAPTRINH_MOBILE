@@ -40,18 +40,19 @@ Sử dụng một trong các công cụ để giả lập: VMware
 - Liệt kê các file trong thư mục: ls
 <img width="1047" height="52" alt="image" src="https://github.com/user-attachments/assets/8981461a-0036-4448-a404-2fcb2faf4fb3" />
 - Tạo thư mục: mkdir nameFolder
-
-Chuyển thư mục làm việc: cd path
-
-Copy file: cp file_nguồn path/file_đích
-
-Thay đổi quyền thao tác file: sudo chmod xxx filename
-
-Edit file: sudo nano tenfile
-
-CTRL+o : lưu nội dung sau khi edit
-
-CTRL+x : thoát edit file
-
-Xem ip của máy ubuntu: ip -4 addr
+- Chuyển thư mục làm việc: cd path
+<img width="933" height="59" alt="image" src="https://github.com/user-attachments/assets/d167595c-e753-4f6d-8661-2c867c102946" />
+- Tạo file mới trong thư mục: nano ten_file.txt
+<img width="1108" height="58" alt="image" src="https://github.com/user-attachments/assets/1d589622-803a-429e-966d-dcca7fbdafa9" />
+- Sau đó gõ nội dung file, nhấn ctril 0 để lưu -> enter -> Gõ Y để xác nhận tên file -> enter ->Xong
+<img width="1771" height="1028" alt="image" src="https://github.com/user-attachments/assets/f29778f9-5fe6-40f7-a27d-d6acd4e7675e" />
+- Copy file: cp file_nguồn path/file_đích
+<img width="1262" height="113" alt="image" src="https://github.com/user-attachments/assets/41367dfc-126b-4fa5-97de-bf823cbf5ed3" />
+- Thay đổi quyền thao tác file: sudo chmod xxx filename
+<img width="1313" height="230" alt="image" src="https://github.com/user-attachments/assets/2a1b353b-17c8-48e3-9be4-09bbe31d8e51" />
+- Edit file: sudo nano tenfile
+<img width="1489" height="791" alt="image" src="https://github.com/user-attachments/assets/7b285902-c60e-4d91-ab52-7e91303905b3" />
+<img width="1119" height="104" alt="image" src="https://github.com/user-attachments/assets/f0ff8d21-ed58-4518-8ca0-9ca4d65463d1" />
+- Xem ip của máy ubuntu: ip -4 addr
+<img width="1266" height="195" alt="image" src="https://github.com/user-attachments/assets/069e3f26-9321-44f5-9711-9a4dc2d225cb" />
 
