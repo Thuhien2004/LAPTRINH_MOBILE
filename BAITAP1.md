@@ -86,14 +86,10 @@ docker compose logs       # Xem logs
 7. Đảm bảo tường lửa trên Ubuntu đã cho phép các cổng 80, 1880, 9630 (Lệnh: sudo ufw allow ...)
 <img width="1050" height="312" alt="image" src="https://github.com/user-attachments/assets/cd6d2c41-84c7-49eb-bf1c-1dcb30581e72" />
 # C. Cấu hình docker compose:
-1. Tạo thư mục: ~/myapp
+1. Tạo thư mục: ~/myapp, Chuyển vào trong thư mục ~/myapp
+<img width="912" height="53" alt="image" src="https://github.com/user-attachments/assets/9f2ba26e-64e9-48ed-955a-c6ecacba1316" /> 
+2. Tạo thư mục: ./myweb,  Tạo file ./myweb/index.html (với nội dung là thông tin cá nhân của em)
 
-2. Chuyển vào trong thư mục ~/myapp
-   
-3. Tạo thư mục: ./myweb
-
-4. Tạo file ./myweb/index.html (với nội dung là thông tin cá nhân của em)
-  
 5. Tạo file docker-compose.yml để nó sẽ có các dịch vụ sau:
    
 Khai báo sử dụng nodered/node-red, cổng 1880, dữ liệu nằm tại thư mục ./nodered
