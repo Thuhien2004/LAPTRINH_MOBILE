@@ -58,4 +58,6 @@ APP2 (android studio):  tạo app tương đương với Mit App inventor
   + activity3: 
     dùng web-view để truy cập từ 
     1 trang web https://k58kmt.tdh.io.vn?masv=mã sv của bạn
+-------------------------------------------------------------------------------------------
+# BÀI LÀM
 
