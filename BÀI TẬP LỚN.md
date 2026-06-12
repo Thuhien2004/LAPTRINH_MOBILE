@@ -60,4 +60,4 @@ APP2 (android studio):  tạo app tương đương với Mit App inventor
     1 trang web https://k58kmt.tdh.io.vn?masv=mã sv của bạn
 -------------------------------------------------------------------------------------------
 # BÀI LÀM
-
+### 1. Viết phần mềm trên công cụ Mit App inventor
