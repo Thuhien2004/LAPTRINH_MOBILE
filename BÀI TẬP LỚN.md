@@ -165,13 +165,16 @@ Sau đó, vào mục cài đặt của điện thoại , cài đặt cấu hình
 Sử dụng Project đã tạo từ APP 1 trước đó , ta triển khai APP 2. Tạo thêm file trong cấu trúc thư mục dự án bao gồm 3 màn hình giống như app của MitApp Invertor
 Bước 1: VẬN HÀNH TẠI "ACTIVITY 1" - MÀN HÌNH TRANG CHỦ (ABOUT)
 1. Quy trình thực hiện và Tương tác giao diện: Khi ứng dụng được cài đặt, người dùng chạm vào biểu tượng ứng dụng trên điện thoại. Hệ thống sẽ phân tích thẻ <intent-filter> trong Manifest và khởi chạy MainActivity đầu tiên.
+
 •	Giao diện hiển thị cấu trúc thông tin sinh viên nằm trong một khối LinearLayout màu trắng có đổ bóng elevation="4dp" để tạo chiều sâu cấu trúc.
+
 •	Thông tin sinh viên không gõ "cứng" (Hardcoded) vào XML mà được ánh xạ từ tệp quản lý tài nguyên tập trung res/values/strings.xml giúp tối ưu hóa mã nguồn theo tiêu chuẩn Google.
+
 •	Phía dưới thông tin cá nhân là 2 nút bấm điều hướng lớn, được phân tách màu sắc (#1976D2 - Xanh dương cho Giải toán và #4CAF50 - Xanh lá cho WebView).
+
 2. Mã nguồn Giao diện XML (activity_main.xml):
 
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -245,7 +248,7 @@ Bước 1: VẬN HÀNH TẠI "ACTIVITY 1" - MÀN HÌNH TRANG CHỦ (ABOUT)
         android:layout_marginTop="16dp" />
 
 </LinearLayout>
-'''
+
 3. Mã nguồn Xử lý Logic Java (MainActivity.java):
 
 package com.example.btl_mobile_app1;
@@ -303,14 +306,15 @@ Bước 2: VẬN HÀNH VÀ KIỂM THỬ MODULE GIẢI TOÁN & GIAO TIẾP API L�
 Bước 3: VẬN HÀNH TẠI "ACTIVITY 3" - TRÌNH DUYỆT NHÚNG WEBVIEW ĐỊNH DANH
 -	Quy trình thực hiện và Tương tác giao diện: Khi người dùng quay trở lại Màn hình 1 và nhấn nút "XEM WEBVIEW ACTIVITY 3", hệ thống lập tức gọi lớp WebActivity. Nhưng hình minh họa ở trên lại hiện thông báo lỗi kết nối API Server , lý do chưa được cấp quyền Internet. 
 -	Ta cấp quyền Internet trong AndroidManifest.xml :
-+ Mở file AndroidManifest.xml. Thêm dòng xin quyền truy cập Internet này nằm ngay phía trên thẻ <application>. 
-''' <uses-permission android:android:name="android.permission.INTERNET" />
-    <application
-        ...'''
-  
-•	Mã nguồn code MathActivity.java
++ Mở file AndroidManifest.xml. Thêm dòng xin quyền truy cập Internet này nằm ngay phía trên thẻ <application>.
+
+<uses-permission android:android:name="android.permission.INTERNET" />
+    <application>
+        
+- Mã nguồn code MathActivity.java
 
 package com.example.btl_mobile_app1;
+
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
