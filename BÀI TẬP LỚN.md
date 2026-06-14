@@ -124,9 +124,13 @@ Dùng app đã có trên điện thoại , quét mã xong rồi tải file apk v
 ## Thực hành APP 1
 ### . Đặt vấn đề và Giải quyết vấn đề 
 •	Đặt vấn đề: Xây dựng ứng dụng "Sổ tay hướng dẫn mẹo lập trình Offline". Ứng dụng cần chứa một lượng lớn dữ liệu bài viết hướng dẫn dưới dạng văn bản có cấu trúc. Nếu lưu trữ trực tiếp trong code Java sẽ gây nặng app và khó bảo trì; nếu lưu trên Server thì khi điện thoại mất mạng (Mất kết nối Internet), người dùng không thể học được.
+
 •	Giải quyết vấn đề: Sử dụng thư mục đặc biệt Assets. Chuẩn bị trước các tệp tin chứa nội dung bài viết dưới dạng cấu trúc tệp .txt phẳng. Khi biên dịch, toàn bộ các tệp này sẽ được đóng gói đi theo App vào thiết bị người dùng.
+
 •	Đặc thù dữ liệu: Dữ liệu dạng văn bản thô (Plain Text), mã hóa chuẩn UTF-8 để hiển thị đúng tiếng Việt.
+
 •	Thuật toán xử lý: Sử dụng luồng đọc dữ liệu dòng BufferedReader để nạp toàn bộ nội dung từ bộ nhớ trong của App, nối chuỗi tuần tự để tái cấu trúc văn bản.
+
 •	Đối tượng hiển thị: Sử dụng thành phần hiển thị văn bản cuộn tự do: TextView nằm bên trong ScrollView.
 
 ### Hiện thực hóa mã nguồn APP 1
@@ -165,7 +169,9 @@ Bước 1: VẬN HÀNH TẠI "ACTIVITY 1" - MÀN HÌNH TRANG CHỦ (ABOUT)
 •	Thông tin sinh viên không gõ "cứng" (Hardcoded) vào XML mà được ánh xạ từ tệp quản lý tài nguyên tập trung res/values/strings.xml giúp tối ưu hóa mã nguồn theo tiêu chuẩn Google.
 •	Phía dưới thông tin cá nhân là 2 nút bấm điều hướng lớn, được phân tách màu sắc (#1976D2 - Xanh dương cho Giải toán và #4CAF50 - Xanh lá cho WebView).
 2. Mã nguồn Giao diện XML (activity_main.xml):
-''' <?xml version="1.0" encoding="utf-8"?>
+
+<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -241,7 +247,8 @@ Bước 1: VẬN HÀNH TẠI "ACTIVITY 1" - MÀN HÌNH TRANG CHỦ (ABOUT)
 </LinearLayout>
 '''
 3. Mã nguồn Xử lý Logic Java (MainActivity.java):
-''' package com.example.btl_mobile_app1;
+
+package com.example.btl_mobile_app1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -280,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-'''
+
 Bước 2: VẬN HÀNH VÀ KIỂM THỬ MODULE GIẢI TOÁN & GIAO TIẾP API LỒNG NHAU
 1. Quy trình thực hiện thực tế trên điện thoại
 1.	Từ Màn hình 1 (Trang chủ About), chạm ngón tay vào nút bấm màu xanh dương "GIẢI TOÁN & GỬI API" (btnMoApp2).
@@ -299,10 +306,11 @@ Bước 3: VẬN HÀNH TẠI "ACTIVITY 3" - TRÌNH DUYỆT NHÚNG WEBVIEW ĐỊN
 + Mở file AndroidManifest.xml. Thêm dòng xin quyền truy cập Internet này nằm ngay phía trên thẻ <application>. 
 ''' <uses-permission android:android:name="android.permission.INTERNET" />
     <application
-        ...''' 
+        ...'''
+  
 •	Mã nguồn code MathActivity.java
-•	package com.example.btl_mobile_app1;
-'''
+
+package com.example.btl_mobile_app1;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -434,7 +442,7 @@ public class MathActivity extends AppCompatActivity {
         });
     }
 }
- '''
+ 
 Sau đó ta chạy thử lại app trên điện thoại, nhập các giá trị a,b và tính toán , nếu thông báo hiện Gửi API thành công thì là hoàn thành.
 <img width="422" height="951" alt="image" src="https://github.com/user-attachments/assets/22a98c82-f911-4598-8c92-0ee1499f243c" />
 
